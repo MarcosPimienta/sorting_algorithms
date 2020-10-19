@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "sort.h"
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * bubble_sort - sorting algorithm
+ * @array: array given.
+ * @size: size of.
+ * Return: Void
  */
 void bubble_sort(int *array, size_t size)
 {

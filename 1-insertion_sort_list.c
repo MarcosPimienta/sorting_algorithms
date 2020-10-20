@@ -1,10 +1,5 @@
 #include "sort.h"
-/**
- * dasdsadasd
- * dsdadadasd
- * sadsadasdasd
- * asdadasd
- */
+
 void insertion_sort_list(listint_t **list)
 {
     listint_t *current;
@@ -17,13 +12,6 @@ void insertion_sort_list(listint_t **list)
         {
             if (current->n < current->prev->n)
             {
-                if (current->next == NULL)
-                {
-                    current->prev = current->prev->prev;
-                    current->next = current->prev->next;
-                    current->next->prev = current;
-                    current->next->next = NULL;
-                }
                 if (current->prev->prev == NULL)
                 {
                     current->next->prev = current->prev;
@@ -35,7 +23,15 @@ void insertion_sort_list(listint_t **list)
                     print_list(*list);
                     break;
                 }
-
+                if (current->next == NULL)
+                {
+                    current->prev = current->prev->prev;
+                    current->next = current->prev->next;
+                    current->next->prev = current;
+                    current->prev->next = current;
+                    current->next->next = NULL;
+                    print_list(*list);
+                }
                 current->prev = current->prev->prev;
                 current->prev->next->prev = current;
                 current->next->prev = current->prev->next;

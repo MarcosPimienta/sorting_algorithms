@@ -2,24 +2,28 @@
 
 void selection_sort(int *array, size_t size)
 {
-	int x = 0, y = 0, temp = 0;
+	int x = 0, y = 0, temp = 0, current = 0;
+	int size_int = size;
 
-	while(array[x] != '\0')
+	while(x < size_int - 1)
 	{
-		if (x == size - 1)
-			break;
+		current = x;
 		y = x + 1;
-		while (y < size)
+		while (y < size_int)
 		{
-			if (array[x] > array[y])
-			{
-				temp = array[x];
-				array[x] = array[y];
-				array[y] = temp;
-				print_array(array, size);
-			}
+			if (array[y] < array[current])
+				current = y;
 			y++;
 		}
+		if (current == x)
+		{
+			x++;
+			continue;
+		}
+		temp = array[x];
+		array[x] = array[current];
+		array[current] = temp;
+		print_array(array, size);
 		x++;
 	}
 }

@@ -2,18 +2,6 @@
 #include <stdio.h>
 #include "sort.h"
 /**
- * swap - swap without losing data.
- * @a: integer
- * @b: integer
- * Return: void
- */
-void swap(int *a, int *b)
-{
-	int t = *a;
-	*a = *b;
-	*b = t;
-}
-/**
  * quick_sort - Holberton useless sorting algorithm.
  * @array: array list
  * @size: array size
@@ -33,22 +21,29 @@ void quick_sort(int *array, size_t size)
  */
 int parts(int *array, size_t size, int low, int high)
 {
-int pivot = array[high];
-int i = (low - 1);
-int j = low;
+	int pivot = array[high];
+	int i = low;
+	int j;
+	int tmp;
 
-while (j <= high - 1)
-{
-	if (array[j] < pivot)
+	for (j = low; j < high; j++)
 	{
-		i++;
-		swap(&array[i], &array[j]);
+		if(array[j] <= pivot)
+		{
+			tmp = array[j];
+			array[j] = array[i];
+			array[i] = tmp;
+			if (j != i)
+				print_array(array, size);
+			i++;
+		}
 	}
-	j++;
-}
-	swap(&array[i + 1], &array[high]);
-	print_array(array, size);
-	return (i + 1);
+	tmp = array[j];
+	array[j] = array[i];
+	array[i] = tmp;
+	if (j != i)
+		print_array(array, size);
+	return (i);
 }
 /**
  * quickSort - Own sorting algorithm.

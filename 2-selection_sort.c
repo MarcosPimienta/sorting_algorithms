@@ -1,11 +1,16 @@
 #include "sort.h"
-
+/**
+ * selection_sort- sorting algorithm.
+ * @array: array list
+ * @size: size_t
+ * Return: void
+ */
 void selection_sort(int *array, size_t size)
 {
 	int x = 0, y = 0, temp = 0, current = 0;
 	int size_int = size;
 
-	while(x < size_int - 1)
+	while (x < size_int - 1)
 	{
 		current = x;
 		y = x + 1;

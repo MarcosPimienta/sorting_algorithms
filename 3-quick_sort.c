@@ -28,7 +28,7 @@ int parts(int *array, size_t size, int low, int high)
 
 	for (j = low; j < high; j++)
 	{
-		if(array[j] <= pivot)
+		if (array[j] <= pivot)
 		{
 			tmp = array[j];
 			array[j] = array[i];
